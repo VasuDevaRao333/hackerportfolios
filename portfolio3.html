@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethical Hacker Portfolio</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        header {
+            background: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #0f0;
+        }
+
+        .hero {
+            background: #444;
+            color: #fff;
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background-image: url('path/to/your/image.jpg');
+            /* Optional: if you want the image as background */
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-image {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 80%;
+            height: auto;
+            z-index: 1;
+            opacity: 0.5;
+            /* Adjust as needed */
+        }
+
+        #matrix {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+
+        section {
+            padding: 40px 20px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .project-card,
+        .blog-post {
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, color 0.3s, transform 0.3s;
+        }
+
+        .project-card:hover,
+        .blog-post:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #333;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        .download-btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #0f0;
+            color: #000;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .download-btn:hover {
+            background-color: #fff;
+            color: #0f0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #333;
+            color: #fff;
+        }
+
+        /* Dark Mode Styles */
+        .dark-mode {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+        }
+
+        .dark-mode header {
+            background: #1e1e1e;
+        }
+
+        .dark-mode .project-card,
+        .dark-mode .blog-post {
+            background: #2e2e2e;
+        }
+
+        .dark-mode button {
+            background-color: #555;
+        }
+
+        /* Toggle Button */
+        .toggle-btn {
+            position: absolute;
+            right: 20px;
+            top: 10px;
+            background: #444;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .toggle-btn.dark-mode {
+            background: #eee;
+            color: #333;
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Lightbox Styles */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 80%;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .carousel {
+            display: flex;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .carousel img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .carousel-controls button {
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        a {
+            text-decoration: none;
+            color: black
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <button class="toggle-btn" onclick="toggleDarkMode()">Dark Mode</button>
+    </header>
+
+    <section id="home">
+        <div class="hero">
+            <canvas id="matrix"></canvas>
+            <img src="./anonymous_mask.png" alt="Hero Image" class="hero-image">
+            <h1>VasuDev</h1>
+            <p>Certified Ethical Hacker | Penetration Tester | Security Enthusiast</p>
+        </div>
+    </section>
+
+
+    <section id="about">
+        <a href="dark.html">
+            <h2>About Me</h2>
+        </a>
+        <p>Hello! I am Vasudev, a passionate ethical hacker with experience in network security, web application
+            security, and penetration testing. I have a deep understanding of various security protocols and have
+            conducted numerous penetration tests to help companies secure their digital assets.</p>
+    </section>
+
+    <section id="projects">
+        <a href="vasu.html">
+            <h2>Projects</h2>
+        </a>
+        <div class="carousel">
+            <img src="projects/project1.jpg" alt="Project 1">
+            <img src="projects/project2.jpg" alt="Project 2">
+            <!-- Add more project images as needed -->
+            <div class="carousel-controls">
+                <button onclick="prevSlide()">&#10094;</button>
+                <button onclick="nextSlide()">&#10095;</button>
+            </div>
+        </div>
+        <div class="project-card">
+            <h3>Project 1: Vulnerability Assessment Tool</h3>
+            <p>Developed a comprehensive vulnerability assessment tool that identifies security weaknesses in networks
+                and web applications. Utilized Python, Nmap, and Metasploit for automated scanning and reporting.</p>
+            <a class="download-btn" href="downloads/vulnerability-tool.zip" download>Download Project</a>
+        </div>
+        <div class="project-card">
+            <h3>Project 2: Penetration Testing Framework</h3>
+            <p>Created a penetration testing framework with modules for network discovery, vulnerability exploitation,
+                and reporting. The framework is designed for educational purposes and supports a wide range of
+                protocols.</p>
+            <a class="download-btn" href="downloads/pen-test-framework.zip" download>Download Project</a>
+        </div>
+        <!-- Add more project cards as needed -->
+    </section>
+
+    <section id="blog">
+        <h2>Blog</h2>
+        <div class="blog-post">
+            <h3>How I Discovered a Vulnerability in XYZ</h3>
+            <p>A brief description of the blog post. Share insights on your findings, methodology, and the impact of
+                your discovery.</p>
+            <a href="blog/vulnerability-in-xyz.html">Read More</a>
+        </div>
+        <!-- Add more blog posts as needed -->
+    </section>
+
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <form id="contactForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 VasuDev. All rights reserved.</p>
+    </footer>
+
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <img src="" id="lightbox-img" alt="Project Image">
+    </div>
+
+    <script>
+        // Matrix Effect in Hero Section
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const matrix = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%';
+        const matrixArray = matrix.split('');
+
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        const drops = [];
+
+        for (let x = 0; x < columns; x++) {
+            drops[x] = 1;
+        }
+
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#0F0';
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = matrixArray[Math.floor(Math.random() * matrixArray.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+
+                drops[i]++;
+            }
+        }
+
+        setInterval(drawMatrix, 50);
+
+        // Dark Mode Toggle
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            document.querySelector('.toggle-btn').classList.toggle('dark-mode');
+        }
+
+        // Contact Form Submission
+        document.getElementById('contactForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            if (name && email && message) {
+                // Simple email validation
+                if (!validateEmail(email)) {
+                    alert('Please enter a valid email address.');
+                    return;
+                }
+
+                alert('Thank you, ' + name + '! Your message has been sent.');
+                // Clear the form
+                document.getElementById('contactForm').reset();
+            } else {
+                alert('Please fill in all fields.');
+            }
+        });
+
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        // Lightbox Functionality
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+        function openLightbox(src) {
+            lightboxImg.src = src;
+            lightbox.classList.add('active');
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+        }
+
+        // Carousel Functionality
+        let currentIndex = 0;
+        const carouselImages = document.querySelectorAll('.carousel img');
+
+        function showSlide(index) {
+            carouselImages.forEach((img, i) => {
+                img.style.transform = `translateX(${(i - index) * 100}%)`;
+            });
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex === 0) ? carouselImages.length - 1 : currentIndex - 1;
+            showSlide(currentIndex);
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex === carouselImages.length - 1) ? 0 : currentIndex + 1;
+            showSlide(currentIndex);
+        }
+
+        showSlide(currentIndex);
+    </script>
+</body>
+
+</html>

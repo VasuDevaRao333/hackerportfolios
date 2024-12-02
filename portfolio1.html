@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hacker Portfolio - Showcasing my projects, skills, and hacking journey.">
+    <title>Hacker Portfolio</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Global Styles */
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #0e0e0e;
+            color: #fff;
+            line-height: 1.6;
+            padding: 0;
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Consolas', monospace;
+            letter-spacing: 2px;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #00ff00, #009900);
+            /* Gradient background */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            /* Subtle shadow for a floating effect */
+        }
+
+        .navbar .logo {
+            font-size: 28px;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            margin: 0;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            font-size: 20px;
+            color: #fff;
+            position: relative;
+            transition: all 0.3s ease-in-out;
+            font-family: 'Arial', sans-serif;
+        }
+
+        nav ul li a:hover {
+            color: #00ff00;
+            transform: translateY(-2px);
+            /* Subtle hover effect */
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #00ff00;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            transform: scaleX(1);
+            /* Underline effect */
+        }
+
+
+        /* Home Section */
+        .home {
+            background: url('background.jpg') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .home h1 {
+            font-size: 50px;
+            color: #00ff00;
+            text-shadow: 0 0 20px rgba(0, 255, 0, 0.7);
+        }
+
+        .home p {
+            color: #ccc;
+            margin: 20px 0;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            background-color: #00ff00;
+            border-radius: 5px;
+            color: #000;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #00cc00;
+            transform: scale(1.1);
+        }
+
+        /* About Section */
+        .about {
+            padding: 60px 20px;
+            background-color: #1b1b1b;
+            text-align: center;
+        }
+
+        .about h2 {
+            font-size: 36px;
+            color: #00ff00;
+        }
+
+        /* Skills Section */
+        .skills {
+            padding: 60px 20px;
+            background-color: #131313;
+            text-align: center;
+        }
+
+        .skills h2 {
+            font-size: 36px;
+            color: #00ff00;
+        }
+
+        .skill-list {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .skill {
+            background-color: #1b1b1b;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 20px;
+            color: #00ff00;
+            border: 2px solid #00ff00;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .skill:hover {
+            background-color: #00ff00;
+            color: #000;
+            transform: scale(1.1);
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 60px 20px;
+            background-color: #1b1b1b;
+            text-align: center;
+        }
+
+        .projects h2 {
+            font-size: 36px;
+            color: #00ff00;
+        }
+
+        .project-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .project {
+            background-color: #222;
+            padding: 20px;
+            border-radius: 10px;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .project h3 {
+            font-size: 24px;
+            color: #00ff00;
+        }
+
+        .project p {
+            color: #ccc;
+        }
+
+        .project:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px #00ff00;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 60px 20px;
+            background-color: #131313;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 36px;
+            color: #00ff00;
+        }
+
+        .contact p {
+            margin-top: 20px;
+            color: #ccc;
+            font-size: 18px;
+        }
+
+        .contact-form {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            max-width: 500px;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 2px solid #00ff00;
+            background-color: #222;
+            color: #fff;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .contact-form button {
+            padding: 10px 20px;
+            background-color: #00ff00;
+            color: #000;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .contact-form button:hover {
+            background-color: #00cc00;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1b1b1b;
+            text-align: center;
+            padding: 20px;
+            color: #ccc;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .skill-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .project-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .home h1 {
+                font-size: 35px;
+            }
+
+            .home p {
+                font-size: 18px;
+            }
+
+            .navbar ul {
+                flex-direction: column;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+
+            .btn {
+                padding: 10px 20px;
+                font-size: 16px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .home h1 {
+                font-size: 28px;
+            }
+
+            .home p {
+                font-size: 16px;
+            }
+
+            .btn {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+
+            .skill-list {
+                grid-template-columns: 1fr;
+            }
+
+            .project-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="logo">Hacker Portfolio</div>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <section id="home" class="home">
+        <h1>Welcome to My Hacking World</h1>
+        <p>Your next cybersecurity expert is right here.</p>
+        <a href="#about" class="btn">Learn More</a>
+    </section>
+
+    <section id="about" class="about">
+        <h2>About Me</h2>
+        <p>I'm a cybersecurity enthusiast with a passion for ethical hacking, penetration testing, and web security.</p>
+    </section>
+
+    <section id="skills" class="skills">
+        <h2>Skills</h2>
+        <div class="skill-list">
+            <div class="skill">Python</div>
+            <div class="skill">Linux</div>
+            <div class="skill">Hacking Tools</div>
+            <div class="skill">Network Security</div>
+            <div class="skill">Penetration Testing</div>
+            <div class="skill">C/C++</div>
+            <div class="skill">Web Security</div>
+            <div class="skill">Cryptography</div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <h2>My Projects</h2>
+        <div class="project-list">
+            <div class="project">
+                <h3><a href="https://example.com/vulnerability-scanner" target="_blank">Vulnerability Scanner</a></h3>
+                <p>A tool to scan websites for vulnerabilities.</p>
+            </div>
+            <div class="project">
+                <h3><a href="https://example.com/phishing-simulator" target="_blank">Phishing Attack Simulator</a></h3>
+                <p>Simulate phishing attacks for security awareness training.</p>
+            </div>
+            <div class="project">
+                <h3><a href="https://example.com/exploit-framework" target="_blank">Exploit Framework</a></h3>
+                <p>A framework for testing and exploiting web applications.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Contact Me</h2>
+        <p>If you have any questions or want to collaborate, feel free to contact me.</p>
+        <div class="contact-form">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit">Send Message</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Hacker Portfolio. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Optional: Add smooth scroll to anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

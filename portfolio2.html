@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hacker Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            margin: 0;
+            background: linear-gradient(135deg, #000000 30%, #0d0d0d 70%);
+            color: #00ff00;
+            font-family: "Courier New", Courier, monospace;
+            overflow-x: hidden;
+            background-attachment: fixed;
+        }
+
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            color: #00ff00;
+            font-size: 1.5em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+
+        .header {
+            text-align: center;
+            padding: 50px 20px;
+            background-color: #000;
+        }
+
+        .header img {
+            width: 150px;
+            border-radius: 50%;
+            opacity: 0.9;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-top: 20px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            animation: glitch 2s infinite;
+            position: relative;
+        }
+
+        @keyframes glitch {
+            0% {
+                text-shadow: 2px 2px #00ff00, -2px -2px #ff00ff;
+            }
+
+            50% {
+                text-shadow: -2px -2px #00ff00, 2px 2px #ff00ff;
+            }
+
+            100% {
+                text-shadow: 2px 2px #00ff00, -2px -2px #ff00ff;
+            }
+        }
+
+        h1:hover {
+            animation: glitch-hover 0.3s steps(5, end);
+        }
+
+        @keyframes glitch-hover {
+            0% {
+                transform: translate(0);
+            }
+
+            20% {
+                transform: translate(-2px, -2px);
+            }
+
+            40% {
+                transform: translate(2px, 2px);
+            }
+
+            60% {
+                transform: translate(-2px, 2px);
+            }
+
+            80% {
+                transform: translate(2px, -2px);
+            }
+
+            100% {
+                transform: translate(0);
+            }
+        }
+
+        h2 {
+            color: #f2f2f2;
+            text-align: center;
+            margin: 30px 0;
+            animation: glitch 2s infinite;
+            font-size: 1.8em;
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+            padding: 0 10px;
+        }
+
+        .about,
+        .skills,
+        .contact {
+            background-color: #1a1a1a;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+        }
+
+        .about p,
+        .skills p,
+        .contact p {
+            color: #bfbfbf;
+            font-size: 1em;
+            line-height: 1.6;
+        }
+
+        .about p {
+            font-size: 1em;
+            animation: typing 5s steps(30, end), blink-caret 0.75s step-end infinite;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 4px solid #00ff00;
+            display: inline-block;
+            width: 0;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes blink-caret {
+
+            from,
+            to {
+                border-color: transparent;
+            }
+
+            50% {
+                border-color: #00ff00;
+            }
+        }
+
+        .skills h3 {
+            color: #00ff00;
+            margin-bottom: 10px;
+            font-size: 1.5em;
+        }
+
+        .progress-container {
+            background-color: #333;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .progress-bar {
+            height: 25px;
+            background-color: #00ff00;
+            text-align: center;
+            line-height: 25px;
+            transition: width 0.3s;
+            color: black;
+            font-weight: bold;
+        }
+
+        .contact input,
+        .contact textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            background-color: #262626;
+            color: #f2f2f2;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .contact button {
+            width: 100%;
+            padding: 15px;
+            background-color: #00ff00;
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contact button:hover {
+            background-color: #00cc00;
+            box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00, 0 0 40px #00ff00;
+        }
+
+        .social-icons {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .social-icons a {
+            color: #00ff00;
+            margin: 0 10px;
+            font-size: 1.2em;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #00cc00;
+        }
+
+        /* Matrix Rain Effect */
+        .matrix {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+
+        .matrix span {
+            color: #00ff00;
+            font-family: monospace;
+            font-size: 14px;
+            position: absolute;
+            white-space: nowrap;
+            user-select: none;
+            text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                top: -10%;
+            }
+
+            100% {
+                top: 110%;
+            }
+        }
+
+        /* Responsive Design */
+        @media only screen and (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            .header img {
+                width: 120px;
+            }
+
+            .about p,
+            .skills p,
+            .contact p {
+                font-size: 0.9em;
+            }
+
+            .contact button {
+                font-size: 1em;
+            }
+
+            .matrix span {
+                font-size: 12px;
+            }
+
+            .progress-bar {
+                height: 20px;
+                line-height: 20px;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            .header img {
+                width: 100px;
+            }
+
+            .about p,
+            .skills p,
+            .contact p {
+                font-size: 0.8em;
+            }
+
+            .contact button {
+                font-size: 0.9em;
+            }
+
+            .progress-bar {
+                height: 18px;
+                line-height: 18px;
+            }
+
+            .social-icons a {
+                font-size: 1em;
+            }
+
+            .matrix span {
+                font-size: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="loading-screen">Loading...</div>
+
+    <div class="header">
+        <img src="anonymous_mask.png" alt="Hacker Mask">
+        <h1>Anonymous</h1>
+        <h2>Front-End Developer | Ethical Hacker</h2>
+    </div>
+
+    <div class="container">
+        <div class="about">
+            <h2>About Me</h2>
+            <p>
+                I am an anonymous front-end developer and ethical hacker with a passion for creating sleek, efficient
+                web
+                designs and secure applications. My skills include HTML, CSS, JavaScript, and various security
+                practices.
+                I believe in the power of open-source development and aim to contribute to projects that make the
+                internet
+                a safer place for everyone.
+            </p>
+        </div>
+
+        <div class="skills">
+            <h2>My Skills</h2>
+            <div class="progress-container">
+                <div class="progress-bar" style="width: 95%;">HTML</div>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar" style="width: 85%;">CSS</div>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar" style="width: 70%;">JavaScript</div>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar" style="width: 60%;">Ethical Hacking</div>
+            </div>
+        </div>
+
+        <div class="contact">
+            <h2>Contact Me</h2>
+            <form id="contactForm">
+                <input type="text" id="name" name="name" placeholder="Your Name">
+                <input type="email" id="email" name="email" placeholder="Your Email">
+                <textarea id="message" name="message" rows="4" placeholder="Your Message"></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="social-icons">
+        <a href="#"><i class="fa fa-facebook"></i></a>
+        <a href="#"><i class="fa fa-twitter"></i></a>
+        <a href="#"><i class="fa fa-linkedin"></i></a>
+        <a href="#"><i class="fa fa-github"></i></a>
+    </div>
+
+    <div class="matrix"></div>
+
+    <script>
+        // Loading Screen
+        window.onload = function () {
+            setTimeout(() => {
+                document.querySelector('.loading-screen').style.display = 'none';
+            }, 3000);
+        };
+
+        // Matrix Effect Script
+        const matrix = document.querySelector('.matrix');
+        const columns = Math.floor(window.innerWidth / 18);
+        const drops = [];
+
+        for (let i = 0; i < columns; i++) {
+            drops[i] = 1; // Initialize all drops to start from the top
+        }
+
+        function drawMatrix() {
+            matrix.innerHTML = ''; // Clear the matrix to redraw characters
+            for (let i = 0; i < drops.length; i++) {
+                const char = String.fromCharCode(33 + Math.random() * 94);
+                const text = document.createElement('span');
+                text.style.left = `${i * 18}px`;
+                text.style.top = `${drops[i] * 18}px`;
+                text.innerText = char;
+                text.style.animationDuration = `${Math.random() * 3 + 2}s`;
+                matrix.appendChild(text);
+
+                // Increment the Y coordinate
+                drops[i]++;
+
+                // Reset drop if it's off screen
+                if (drops[i] * 18 > window.innerHeight && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+            }
+        }
+
+        setInterval(drawMatrix, 50); // Adjusted interval for smoother animation
+
+        // Handle form submission
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Message Sent!');
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blackhat Hacker Portfolio</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #00ff00;
+            box-sizing: border-box;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px 0;
+            z-index: 1000;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.7);
+        }
+
+        .navbar .logo {
+            font-size: 2.2em;
+            color: #00ff00;
+            text-decoration: none;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .navbar nav a {
+            color: #00ff00;
+            text-decoration: none;
+            padding: 12px 20px;
+            margin-left: 15px;
+            font-size: 1.2em;
+            transition: background-color 0.3s ease-in-out;
+            border-radius: 5px;
+        }
+
+        .navbar nav a:hover {
+            background-color: #333;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background-color: #1a1a1a;
+            text-align: center;
+            padding: 100px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            margin: 0;
+            animation: fadeIn 2s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.5em;
+            margin-top: 20px;
+            animation: fadeIn 2s ease-out;
+            animation-delay: 0.8s;
+        }
+
+        /* Keyframes for Fade-in Effect */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Skills Section */
+        #skills {
+            background-color: #1c1c1c;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        #skills h2 {
+            font-size: 2.8em;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+        }
+
+        #skills ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 30px;
+            justify-items: center;
+        }
+
+        #skills li {
+            font-size: 1.5em;
+            background-color: #333;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0px 4px 10px rgba(0, 255, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        #skills li:hover {
+            transform: scale(1.05);
+        }
+
+        /* Projects Section */
+        #projects {
+            background-color: #000;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        #projects h2 {
+            font-size: 2.8em;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+        }
+
+        .projects-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .project {
+            background-color: #333;
+            padding: 25px;
+            width: 280px;
+            height: 320px;
+            border-radius: 10px;
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0px 0px 20px rgba(0, 255, 0, 0.2);
+        }
+
+        .project h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .project p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .project:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 0px 30px rgba(0, 255, 0, 0.6);
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: #111;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 2.8em;
+            margin-bottom: 40px;
+        }
+
+        input,
+        textarea {
+            width: 80%;
+            padding: 15px;
+            margin: 15px 0;
+            background-color: #222;
+            color: #00ff00;
+            border: 1px solid #00ff00;
+            border-radius: 8px;
+            font-size: 1.2em;
+        }
+
+        button {
+            padding: 15px 30px;
+            background-color: #00ff00;
+            color: #000;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2em;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #00cc00;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 20px 10px;
+                text-align: center;
+            }
+
+            .navbar nav {
+                margin-top: 10px;
+            }
+
+            .hero h1 {
+                font-size: 2.5em;
+            }
+
+            .hero p {
+                font-size: 1.3em;
+            }
+
+            .projects-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .project {
+                width: 80%;
+            }
+
+            #skills ul {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            input,
+            textarea {
+                width: 90%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.2em;
+            }
+
+            .hero p {
+                font-size: 1.1em;
+            }
+
+            input,
+            textarea {
+                width: 100%;
+            }
+
+            button {
+                width: 100%;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <a href="#home" class="logo">Blackhat Hacker</a>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <h1>Welcome to My Blackhat Hacker Portfolio</h1>
+        <p>Mastering the art of penetration testing and cyber defense</p>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2>My Skills</h2>
+        <ul>
+            <li>Penetration Testing</li>
+            <li>Network Security</li>
+            <li>Malware Analysis</li>
+            <li>Cryptography</li>
+            <li>Web Application Security</li>
+        </ul>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2>Hacking Projects</h2>
+        <div class="projects-container">
+            <div class="project">
+                <h3>SQL Injection Attack Simulator</h3>
+                <p>Simulate and test SQL injection vulnerabilities in web applications.</p>
+            </div>
+            <div class="project">
+                <h3>Phishing Attack Framework</h3>
+                <p>Framework to simulate phishing attacks to test email security protocols.</p>
+            </div>
+            <div class="project">
+                <h3>Botnet Simulation</h3>
+                <p>Building and simulating a botnet for cybersecurity testing and awareness.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2>Contact Me</h2>
+        <form id="contactForm" onsubmit="submitForm(event)">
+            <input type="email" placeholder="Your email" required>
+            <textarea placeholder="Your message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <script>
+        // Form Submission (Simulated)
+        function submitForm(event) {
+            event.preventDefault();
+
+            const email = event.target[0].value;
+            const message = event.target[1].value;
+
+            if (email && message) {
+                alert('Message sent successfully! Keep an eye on your inbox...');
+                console.log('Email:', email);
+                console.log('Message:', message);
+            } else {
+                alert('Please fill in all fields');
+            }
+        }
+
+        // Hacking Simulation Example (Simulate Hacking Click Event)
+        document.addEventListener('DOMContentLoaded', () => {
+            const projects = document.querySelectorAll('.project');
+
+            projects.forEach(project => {
+                project.addEventListener('click', () => {
+                    alert('Initiating hacking protocol... Please wait...');
+                    console.log('Hacking simulation started...');
+                });
+            });
+        });
+
+    </script>
+</body>
+
+</html>
